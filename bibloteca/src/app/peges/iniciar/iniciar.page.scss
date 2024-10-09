@@ -1,0 +1,84 @@
+ion-content.inico {
+    --background: #0d0d0d;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+
+    .i-extructura{
+      width: 100%; 
+      text-align: center; 
+      background-color: #0d0d0d; 
+     
+      padding-top:100px;
+      border: 30px; 
+  }
+  
+
+    .inicio-foto {
+      display: block;
+      margin: 30px auto 20px auto;
+      width: 200px; 
+      height: auto;
+    }
+  
+   
+    .inico-titulo {
+      text-align: center;
+      color: white; 
+      padding-top: 30px;
+      margin-top: 30px;
+  
+      h1 {
+        font-size: 28px;
+        font-weight: bold;
+      }
+  
+      p {
+        font-size: 18px;
+        margin-top: 8px;
+        color: #b3b3b3; 
+      }
+    }
+  
+    
+    ion-button.registar {
+      width: 60%;
+      height: 10px;
+      font-size: 18px;
+      border-radius: 30px;
+   
+      margin-top: 20px;
+     
+      --background: #0056b3; 
+      --background-hover: #2d84e0; 
+    }
+  
+   .s1{
+    margin-top: 30px;
+   }
+    ion-button.r1 {
+      width: 35%;
+      height: 30px;
+      font-size: 13px;
+      border-radius: 25px;
+      margin: 10px 25px;
+     
+      color: white;
+      --background-hover: #555555;
+    }
+  
+   
+    ion-item.c1 {
+      margin-top: auto;
+      --background: none;
+      text-align: center;
+    
+  
+      ion-label.c2 {
+        font-size: 12px;
+        color: #999999; 
+      }
+    }
+  }
+  

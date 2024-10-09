@@ -1,0 +1,7 @@
+{
+  "name": "bibloteca",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

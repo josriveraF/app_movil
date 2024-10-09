@@ -1,0 +1,152 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear">
+      <ion-icon slot="icon-only" name="house-outline"></ion-icon>
+    </ion-button>
+    <ion-title>Listado de Libros</ion-title>
+  </ion-toolbar>
+  <ion-searchbar></ion-searchbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+  </ion-header>
+  <ion-content color="light">
+    <ion-list [inset]="true">
+      <ion-item>
+        <ion-label>Harry Potter: la piedra filosofal</ion-label>
+        <ion-note slot="end"> STOCK DISPONIBLE 10/20 </ion-note>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Anatomia de moore: septima edicion</ion-label>
+        <ion-note slot="end"> STOCK DISPONIBLE 20/50</ion-note>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mecanica Automotriz</ion-label>
+        <ion-note slot="end"> STOCK DISPONIBLE 23/50</ion-note>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label>Programacion orientada a objetos</ion-label>
+        <ion-note slot="end"> STOCK DISPONIBLE 15/50</ion-note>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Alimentacion saludable</ion-label>
+        <ion-note slot="end"> STOCK DISPONIBLE 29/50</ion-note>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+  <ion-button   expand="block" fill="clear" shape="round">
+    Agregar Libro
+  </ion-button>
+  <ion-card>
+    <ion-item>
+      <ion-title>Nuevo</ion-title>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="stacked">Autor</ion-label>
+      <ion-input type="text" placeholder="J. K. Rowling"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="stacked">Género</ion-label>
+      <ion-input type="text" placeholder="Fantasía"></ion-input>
+    </ion-item>
+  
+    <ion-item >
+      <ion-label position="stacked">Estado</ion-label>
+    </ion-item>
+  
+    <ion-item>
+      <!-- informacion importante justify-content: space-between: Asegura que los botones de radio se distribuyan uniformemente en la fila.
+flex-wrap: nowrap: Evita que los elementos se desborden o se muevan a una nueva línea.
+max-width: 40px en cada <ion-item>: Limita el ancho de cada botón de radio para que quepan todos en la misma línea sin problemas de visualización.
+lines="none": Evita las líneas divisorias en cada ítem, para un diseño más limpio.-->
+      <ion-radio-group style="display: flex; justify-content: space-between; flex-wrap: nowrap;">
+        
+        <ion-item lines="none" style="max-width: 40px;">
+          <ion-label>1</ion-label>
+          
+          <ion-radio slot="start" value="1"></ion-radio>
+        </ion-item>
+        
+        <ion-item lines="none" style="max-width: 40px;">
+          <ion-label>2</ion-label>
+          <ion-radio slot="start" value="2"></ion-radio>
+        </ion-item>
+  
+        <ion-item lines="none" style="max-width: 40px;">
+          <ion-label>3</ion-label>
+          <ion-radio slot="start" value="3"></ion-radio>
+        </ion-item>
+  
+        <ion-item lines="none" style="max-width: 40px;">
+          <ion-label>4</ion-label>
+          <ion-radio slot="start" value="4"></ion-radio>
+        </ion-item>
+  
+        <ion-item lines="none" style="max-width: 40px;">
+          <ion-label>5</ion-label>
+          <ion-radio slot="start" value="5"></ion-radio>
+        </ion-item>
+       
+      </ion-radio-group>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Descripcion</ion-label>
+        <ion-textarea placeholder="Escribe aquí la descripción del libro..."></ion-textarea>
+      </ion-item>
+      <ion-button   expand="block" fill="clear" shape="round">
+        Guardar libro
+      </ion-button>
+      <ion-button  expand="block" fill="clear" shape="round" style="color: brown;">
+        Cancelar
+      </ion-button>
+    </ion-card>
+    </ion-list>

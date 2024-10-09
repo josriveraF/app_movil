@@ -1,0 +1,67 @@
+<ion-content class="ini">
+<div *ngIf="isLoginVisible">
+  <ion-card class="i-extruct">
+    <ion-card-header class="ti">
+      <ion-card-title>Login</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Email: </ion-label>
+        <ion-input type="email" placeholder="Ingrese su correo.." name="correo" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Password: </ion-label>
+        <ion-input type="password" placeholder="Ingrese su password.." name="pass"></ion-input>
+      </ion-item>
+
+    </ion-card-content>
+
+    <div style="text-align: center;">
+      <ion-button  (click)="inicio()"fill="solid" shape="round" color="primary" style="padding-bottom: 10px;">
+        Login
+      </ion-button>
+      <ion-button (click)="showolvido()" fill="solid" shape="round" color="primary" style="padding-bottom: 10px; margin-left: 15%; ">
+        Recuperar
+      </ion-button>
+    </div>
+
+  </ion-card>
+  </div>
+<!-- aqui separo ambos-->
+<div *ngIf="!isLoginVisible">
+  <ion-card class="i-extruct">
+    <ion-card-header class="ti">
+      <ion-card-title>Registro</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre: </ion-label>
+        <ion-input type="text" placeholder="Ingrese su Nombre.." name="text1" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Apellido: </ion-label>
+        <ion-input type="text" placeholder="Ingrese su apellido.." name="text2" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email: </ion-label>
+        <ion-input type="email" placeholder="Ingrese su correo.." name="correo" ></ion-input>
+      </ion-item>
+
+      
+
+    </ion-card-content>
+
+    <div style="text-align: center;">
+      <ion-button  fill="solid" shape="round" color="primary" style="padding-bottom: 10px;">
+        Recuperar
+      </ion-button>
+      <ion-button  (click)="showregresar()" fill="solid" shape="round" color="primary" style="padding-bottom: 10px; margin-left: 20px;">
+        Regresar
+      </ion-button>
+    </div>
+  </ion-card>
+</div>
+</ion-content>

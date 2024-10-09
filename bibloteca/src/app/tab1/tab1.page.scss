@@ -1,0 +1,71 @@
+ion-content {
+    --background: #ffffff;
+  
+  .t1{
+    --background: #000000;
+  }
+  .titulo-tabs{
+    margin: 5px;
+    font-size: 15px;
+    ;
+  }
+  .box {
+    background-color: #f0f0f0;
+    padding: 50px;
+    margin: 5pz;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  .tarjeta-biblo {
+    background-color: #ffffff; /* Fondo oscuro */
+    border-radius: 12px;
+    margin: 20px;
+    padding-top: 30px ;
+    padding-bottom: 30px;
+   
+
+    
+  }
+  
+  .tarjeta-bi {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .titulo {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+  }
+  
+  .subtitulo {
+    font-size: 12px;
+    color: #000000;
+    padding-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .icoo {
+    color: #ffcc00; /* Color amarillo para el ícono */
+    font-size: 30px;
+    margin: 10px;
+  }
+  
+  .dias {
+    
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-top: 10px ;
+  }
+  
+  .barra-progreso {
+    height: 8px;
+    border-radius: 10px;
+    padding-top: 7px;
+  
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "mascotas": [
+    {
+      "id": "1",
+      "nombre": "princesa",
+      "tipo": "perro",
+      "color": "cobrizo"
+    },
+    {
+      "id": "2",
+      "nombre": "león",
+      "tipo": "perro",
+      "color": "blanco"
+    },
+    {
+      "id": "3",
+      "nombre": "rain man",
+      "tipo": "tortuga",
+      "color": "verde"
+    },
+    {
+      "id": "7982",
+      "nombre": "Lulu",
+      "tipo": "Perro",
+      "color": "negro"
+    },
+    {
+      "id": "c207",
+      "nombre": "Harry",
+      "color": "blanco",
+      "tipo": "perro"
+    },
+    {
+      "id": "619d",
+      "nombre": "Tom",
+      "color": "blanco",
+      "tipo": "gato"
+    }
+  ],
+  "usuarios": []
+}
