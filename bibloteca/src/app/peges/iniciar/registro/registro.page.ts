@@ -15,7 +15,7 @@ export class RegistroPage implements OnInit {
   }
 
   // Método para mostrar la vista de login
-  showregresar() {
+  showregresar() {  
     this.isLoginVisible = true;
   }
 
@@ -27,5 +27,7 @@ export class RegistroPage implements OnInit {
   inicio(){
     this.router.navigate(['/tabs/tab1']);
   }
-
+  acceso(){
+    this.router.navigate(['/iniciar']);
+  }
 }

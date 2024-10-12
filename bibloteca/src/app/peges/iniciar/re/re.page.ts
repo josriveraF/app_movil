@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-re',
   templateUrl: './re.page.html',
@@ -7,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RePage implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
+  acceso(){
+    this.router.navigate(['/iniciar/registro']);
+  }
   ngOnInit() {
   }
 

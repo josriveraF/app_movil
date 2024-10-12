@@ -14,6 +14,22 @@ const routes: Routes = [
   {
     path: 're',
     loadChildren: () => import('./re/re.module').then( m => m.RePageModule)
+  },
+  {
+    path: 'usuario',
+    loadChildren: () => import('./usuario/usuario.module').then( m => m.UsuarioPageModule)
+  },
+  {
+    path: 'gr',
+    loadChildren: () => import('./gr/gr.module').then( m => m.GrPageModule)
+  },
+  {
+    path: 'mibibloteca',
+    loadChildren: () => import('./mibibloteca/mibibloteca.module').then( m => m.MibiblotecaPageModule)
+  },
+  {
+    path: 'solicitud',
+    loadChildren: () => import('./solicitud/solicitud.module').then( m => m.SolicitudPageModule)
   }
 
 ];

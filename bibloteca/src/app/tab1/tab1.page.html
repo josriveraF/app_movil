@@ -1,11 +1,116 @@
-
+<ion-header >
+  <ion-toolbar>
+    <ion-title class="titulo-tabs" size="large">Bibloconnect</ion-title>
+    <ion-buttons slot="end" (click)="usuario()">
+      <ion-avatar>
+        <img src="assets/avatar.jpg" alt="Foto de perfil">
+      </ion-avatar>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title class="titulo-tabs" size="large">Bibloconnect</ion-title>
-      <ion-buttons slot="end">
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  
+    <div>
+      <ion-toolbar>
+        <ion-title>Hola José Rivera</ion-title>
+      </ion-toolbar>
+    </div>
+
+    <ion-card class="tarjeta-biblo" (click)="biblotecaentrega()">
+      <ion-card-header class="tarjeta-bi">
+        <ion-toolbar>
+        
+          <ion-card-title class="titulo">Biblioteca Duoc</ion-card-title>
+          <ion-card-subtitle class="subtitulo">Entrega de próxima</ion-card-subtitle>
+          
+          <ion-buttons slot="end">
+            <ion-icon name="archive-outline" class="icoo"></ion-icon>
+          </ion-buttons>
+       
+    
+          <p class="dias">3 días</p>
+          <br>
+          <ion-progress-bar value="0.6" class="barra-progreso"></ion-progress-bar>
+
+        
+          
+        </ion-toolbar>
+      </ion-card-header>
+    </ion-card>
+    
+<div>
+  <ion-toolbar>
+    <h1 slot="start" style="margin: 20px;">Menu </h1>
+  </ion-toolbar>
+</div>
+    
+
+    <ion-grid>
+      <ion-row>
+        <!-- Primer botón -->
+        <ion-col size="6" size-sm="6" >
+          <ion-card class="boton-custom" (click)="mibiblo()">
+           
+            <ion-card-content class="menu-box">
+              
+              <ion-buttons slot="end" style="padding-bottom: 10px;">
+                <ion-icon name="archive-outline" class="icoo"></ion-icon>
+              </ion-buttons>
+              <ion-card-title class="titulo">Mi Biblioteca </ion-card-title>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        
+  
+        <!-- Puedes agregar más botones repitiendo la estructura -->
+        <ion-col size="6" size-sm="6" >
+          <ion-card class="boton-custom" (click)="Solicitud()">
+           
+            <ion-card-content class="menu-box">
+              
+              <ion-buttons slot="end" style="padding-bottom: 10px;">
+                <ion-icon name="archive-outline" class="icoo"></ion-icon>
+              </ion-buttons>
+              <ion-card-title class="titulo">Solicitud </ion-card-title>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6" size-sm="6" >
+          <ion-card class="boton-custom" (click)="qr()">
+           
+            <ion-card-content class="menu-box">
+              
+              <ion-buttons slot="end" style="padding-bottom: 10px;">
+                <ion-icon name="archive-outline" class="icoo"></ion-icon>
+              </ion-buttons>
+              <ion-card-title class="titulo">Codigo QR </ion-card-title>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        
+  
+        <!-- Puedes agregar más botones repitiendo la estructura -->
+        <ion-col size="6" size-sm="6" >
+          <ion-card class="boton-custom">
+           
+            <ion-card-content class="menu-box">
+              
+              <ion-buttons slot="end" style="padding-bottom: 10px;">
+                <ion-icon name="archive-outline" class="icoo"></ion-icon>
+              </ion-buttons>
+              <ion-card-title class="titulo">Sugerencia </ion-card-title>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    
 </ion-content>
-  <ion-icon name="scan-outline" style="height: 100%;  width: 100%; color: black;"  ></ion-icon>

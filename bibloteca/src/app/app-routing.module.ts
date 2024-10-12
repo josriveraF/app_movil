@@ -15,10 +15,7 @@ const routes: Routes = [
     path: 'iniciar',
     loadChildren: () => import('./peges/iniciar/iniciar.module').then( m => m.IniciarPageModule)
   },
-  {
-    path: 'pages',
-    loadChildren: () => import('./pages/pages.module').then( m => m.PagesPageModule)
-  },
+ 
   
   
   

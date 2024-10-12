@@ -1,0 +1,39 @@
+
+.titulo-tabs{
+    margin: 5px;
+    font-size: 15px;
+    text-align: center;
+    
+}
+
+
+
+  
+.card-busqueda{
+    height: 55px;
+    margin: 20px;
+    border-radius: 12px;
+    padding: 13px;
+}
+.card-busque{
+    height: 30px;
+    display: flex;
+    align-items: flex-start; // Alinea al inicio verticalmente
+    
+    
+}
+.item-busque{
+    display: flex;
+    align-items: flex-start; // Alinea al inicio verticalmente
+    padding-bottom: 5px;
+    
+}
+.box-libro-radio{
+    border-radius: 12px;
+    border: 2px solid #1ef816;
+}
+.box-libro{
+   padding-top:5px;
+   padding-bottom: 1px;
+    
+}

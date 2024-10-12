@@ -6,7 +6,13 @@ import { Router } from '@angular/router';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
+  borrar: string = '';
   constructor(private router:Router) {}
-
+  regresar(){
+    this.router.navigate(['/tabs/tab1']);
+  }
+  usuario(){
+    this.router.navigate(['/iniciar/usuario']);
+  }
 }
+  

@@ -23,7 +23,7 @@
         Login
       </ion-button>
       <ion-button (click)="showolvido()" fill="solid" shape="round" color="primary" style="padding-bottom: 10px; margin-left: 15%; ">
-        Recuperar
+        Olvidado
       </ion-button>
     </div>
 
@@ -47,16 +47,16 @@
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Email: </ion-label>
-        <ion-input type="email" placeholder="Ingrese su correo.." name="correo" ></ion-input>
+        <ion-input type=  "email" placeholder="Ingrese su correo.." name="correo" ></ion-input>
       </ion-item>
 
       
 
     </ion-card-content>
-
+<!--alarm diciendo le enviamos la contraseña x correo indicADO SI TIene cuenta-->
     <div style="text-align: center;">
-      <ion-button  fill="solid" shape="round" color="primary" style="padding-bottom: 10px;">
-        Recuperar
+      <ion-button (click)="acceso()" fill="solid" shape="round" color="primary" style="padding-bottom: 10px;">
+        Enviar
       </ion-button>
       <ion-button  (click)="showregresar()" fill="solid" shape="round" color="primary" style="padding-bottom: 10px; margin-left: 20px;">
         Regresar

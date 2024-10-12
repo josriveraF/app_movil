@@ -1,0 +1,62 @@
+<ion-content class="ion-padding" style="background-color: #1c1c1e;">
+ 
+  <ion-item lines="none">
+    <ion-buttons slot="start" (click)="regresar()" >
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+  </ion-item>
+ 
+  <!-- Avatar y Nombre -->
+  <div class="profile-header" style="text-align: center; margin-top: 40px;">
+    <ion-avatar>
+      <img src="assets/libross.jpg" alt="User Image" />
+    </ion-avatar>
+    <h2 style="color: rgb(0, 0, 0); margin-top: 10px;">Erlich Bachman</h2>
+    <p style="color: #999;">erlichbachmanpiedpiper.com</p>
+  </div>
+
+
+  <ion-button expand="block" shape="round" color="primary" style="margin-top: 20px;" (click)="datoeditar()">
+    {{ ver ? 'Cancelar' : 'Editar perfil' }}
+    <!-- dala opcion de mostrar uno con ver si esta en true se cambia a cancelar -->
+  </ion-button>
+
+ 
+  <ion-card *ngIf="ver" style="margin-top: 20px;">
+    <ion-card-header>
+      <ion-card-title style="color: black;">Modificar Perfil</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input value="Erlich Bachman"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Correo</ion-label>
+        <ion-input value="erlichbachman@piedpiper.com"></ion-input>
+      </ion-item>
+    
+    </ion-card-content>
+
+    <ion-button expand="block" shape="round" color="success" (click)="datoguardar()">
+      Guardar
+    </ion-button>
+  </ion-card>
+
+  <!-- Notificaciones copiado -->
+  <ion-item lines="none" style="margin-top: 30px;">
+    <ion-label style="color: white;">Activar notificaciones</ion-label>
+    <ion-toggle slot="end"></ion-toggle>
+  </ion-item>
+
+  <!-- Invitar Gente -->
+  <ion-item lines="none" style="margin-top: 30px;">
+    <ion-label style="color: white;">Invitar gente</ion-label>
+    <ion-button slot="end" shape="round" color="primary">Invitar</ion-button>
+  </ion-item>
+
+  <!-- Finalizar sesión -->
+  <div style="text-align: center; margin-top: 50px;">
+    <p style="color: #666;">Finalizar la sesión</p>
+  </div>
+</ion-content>

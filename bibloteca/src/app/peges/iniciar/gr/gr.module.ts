@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PagesPageRoutingModule } from './pages-routing.module';
+import { GrPageRoutingModule } from './gr-routing.module';
 
-import { PagesPage } from './pages.page';
+import { GrPage } from './gr.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PagesPageRoutingModule
+    GrPageRoutingModule
   ],
-  declarations: [PagesPage]
+  declarations: [GrPage]
 })
-export class PagesPageModule {}
+export class GrPageModule {}
