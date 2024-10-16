@@ -1,3 +1,4 @@
+
 <ion-header >
   <ion-toolbar>
     <ion-buttons slot="start" (click)="regresar()" >
@@ -28,14 +29,7 @@
       
     
   </ion-card>
-<!--<ion-input type="text" placeholder="Buscar" name="correo" ></ion-input>--> 
-   
-      
-   
-  
-<!--<ion-item-option color="tertiary">
-          <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
-        </ion-item-option>-->
+
       <ion-item>
         <ion-button shape="round">Todo</ion-button> 
         <ion-button shape="round">Entrega</ion-button>
@@ -44,117 +38,26 @@
         
   <ion-list [inset]="true">
 <!-- 1 -->
- <div class="box-libro">
-    <ion-item-sliding class="box-libro-radio" >
-      <ion-item [button]="true" >
-        <ion-avatar aria-hidden="true" slot="start">
-          <img alt="" src="assets/robot.jpg" />
-        </ion-avatar>
-        <ion-label>Robotica </ion-label>
-      </ion-item>
-      <ion-item-options slot="end">
-       
+<div *ngFor="let libro of libros" class="box-libro">
+  <ion-item-sliding *ngIf="libro.disponible" [ngClass]="{ 'disponible': libro.disponible, 'no-disponible': !libro.disponible }">
+    <ion-item [button]="true">
+      <ion-avatar aria-hidden="true" slot="start">
+        <img alt="Portada del libro" [src]="libro.imagen_url" />
+      </ion-avatar>
+      <ion-label>
+        <h3><strong>{{ libro.nombre }}</strong></h3>
+        <p>{{ libro.descripcion }}</p>
+        <p><strong>Autor:</strong> {{ libro.autor }}</p>
         
-        <ion-item-option color="warning" expandable="true">
-          <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </div>
-<!-- 2 -->
-<div class="box-libro">
-  <ion-item-sliding class="box-libro-radio" >
-    <ion-item [button]="true" >
-      <ion-avatar aria-hidden="true" slot="start">
-        <img alt="" src="assets/robot.jpg" />
-      </ion-avatar>
-      <ion-label>Robotica </ion-label>
+        <p>
+          <strong>Disponible:</strong> {{ libro.disponible ? 'Sí' : 'No' }}</p>
+      </ion-label>
     </ion-item>
     <ion-item-options slot="end">
-     
-      
       <ion-item-option color="warning" expandable="true">
         <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
       </ion-item-option>
     </ion-item-options>
   </ion-item-sliding>
 </div>
-<!-- 3 -->
-<div class="box-libro">
-  <ion-item-sliding class="box-libro-radio" >
-    <ion-item [button]="true" >
-      <ion-avatar aria-hidden="true" slot="start">
-        <img alt="" src="assets/robot.jpg" />
-      </ion-avatar>
-      <ion-label>Robotica </ion-label>
-    </ion-item>
-    <ion-item-options slot="end">
-     
-      
-      <ion-item-option color="warning" expandable="true">
-        <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
-</div>
-<!-- 4 -->
-<div class="box-libro">
-  <ion-item-sliding class="box-libro-radio" >
-    <ion-item [button]="true" >
-      <ion-avatar aria-hidden="true" slot="start">
-        <img alt="" src="assets/robot.jpg" />
-      </ion-avatar>
-      <ion-label>Robotica </ion-label>
-    </ion-item>
-    <ion-item-options slot="end">
-     
-      
-      <ion-item-option color="warning" expandable="true">
-        <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
-</div>
-<!-- aqui cambio al presionar un button y modoficar las clase de rarioo para que cambie el color igual-->
- <div >
-      <div class="box-libro">
-        <ion-item-sliding class="box-libro-radio" >
-          <ion-item [button]="true" >
-            <ion-avatar aria-hidden="true" slot="start">
-              <img alt="" src="assets/robot.jpg" />
-            </ion-avatar>
-            <ion-label>Robotica </ion-label>
-          </ion-item>
-          <ion-item-options slot="end">
-          
-            
-            <ion-item-option color="warning" expandable="true">
-              <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
-            </ion-item-option>
-          </ion-item-options>
-        </ion-item-sliding>
-      </div>
-      <!-- 6 -->
-      <div class="box-libro">
-        <ion-item-sliding class="box-libro-radio" >
-          <ion-item [button]="true" >
-            <ion-avatar aria-hidden="true" slot="start">
-              <img alt="" src="assets/robot.jpg" />
-            </ion-avatar>
-            <ion-label>Robotica </ion-label>
-          </ion-item>
-          <ion-item-options slot="end">
-          
-            
-            <ion-item-option color="warning" expandable="true">
-              <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
-            </ion-item-option>
-          </ion-item-options>
-        </ion-item-sliding>
-      </div>
-    </div>
-  </ion-list>
 
-</ion-content>  
-
-  
