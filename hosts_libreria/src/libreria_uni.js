@@ -13,13 +13,19 @@ app.use(bodyParser.json());
 // Definir una ruta para obtener libros de la tabla libros_biblioteca
 app.get('/libros', async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM libros_biblioteca;");
+    const result = await pool.query(`
+      SELECT l.nombre, l.descripcion, c.nombre AS categoria, s.cantidad, l.imagen_url, l.autor, l.disponible
+      FROM public.libros_biblioteca l
+      JOIN public.stock_biblioteca s ON l.id = s.libro_id
+      JOIN public.categorias c ON l.categoria_id = c.id;
+    `);
     res.json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Error al obtener libros' });
   }
 });
+
 
 // Definir una ruta para agregar un libro
 app.post('/libros', async (req, res) => {

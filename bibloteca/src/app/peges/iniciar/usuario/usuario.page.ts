@@ -17,7 +17,7 @@ regresar(){
 }
 // Función para guardar los cambios y bloquear el formulario
 datoguardar() {
-  this.ver = false;
+  this.ver =!this.ver;
   // Aquí puedes agregar la lógica para guardar los datos
   console.log("Datos guardados");
 }

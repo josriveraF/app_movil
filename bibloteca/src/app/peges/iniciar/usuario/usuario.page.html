@@ -16,7 +16,7 @@
   </div>
 
 
-  <ion-button expand="block" shape="round" color="primary" style="margin-top: 20px;" (click)="datoeditar()">
+  <ion-button *ngIf="!ver" expand="block" shape="round" color="primary" style="margin-top: 20px;" (click)="datoeditar()">
     {{ ver ? 'Cancelar' : 'Editar perfil' }}
     <!-- dala opcion de mostrar uno con ver si esta en true se cambia a cancelar -->
   </ion-button>
@@ -40,6 +40,9 @@
 
     <ion-button expand="block" shape="round" color="success" (click)="datoguardar()">
       Guardar
+    </ion-button>
+    <ion-button expand="block" shape="round" style="color: rgb(255, 0, 0);"(click)="datoguardar()">
+      cancelar
     </ion-button>
   </ion-card>
 

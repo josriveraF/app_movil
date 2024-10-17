@@ -29,35 +29,71 @@
       
     
   </ion-card>
+  
 
-      <ion-item>
-        <ion-button shape="round">Todo</ion-button> 
-        <ion-button shape="round">Entrega</ion-button>
-        <ion-button shape="round">Pedidos</ion-button>
-      </ion-item>
+  <ion-item>
+    <ion-label>filtar genero </ion-label>
+    <ion-select [(ngModel)]="categoriaSeleccionada" placeholder="Seleccionar categoria">
+      <ion-select-option *ngFor="let categoria of categorias" [value]="categoria">
+        {{ categoria }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  <nav> <ion-button expand="block" shape="round" color="primary" style="margin-top: 20px;" (click)="basededato()">
+    {{ ver ? 'Alumnos' : 'Biblioteca Duoc' }} <!-- Cambia el texto según el valor de 'ver' -->
+  </ion-button></nav>
         
-  <ion-list [inset]="true">
 <!-- 1 -->
-<div *ngFor="let libro of libros" class="box-libro">
-  <ion-item-sliding *ngIf="libro.disponible" [ngClass]="{ 'disponible': libro.disponible, 'no-disponible': !libro.disponible }">
-    <ion-item [button]="true">
-      <ion-avatar aria-hidden="true" slot="start">
-        <img alt="Portada del libro" [src]="libro.imagen_url" />
-      </ion-avatar>
-      <ion-label>
-        <h3><strong>{{ libro.nombre }}</strong></h3>
-        <p>{{ libro.descripcion }}</p>
-        <p><strong>Autor:</strong> {{ libro.autor }}</p>
-        
-        <p>
-          <strong>Disponible:</strong> {{ libro.disponible ? 'Sí' : 'No' }}</p>
-      </ion-label>
-    </ion-item>
-    <ion-item-options slot="end">
-      <ion-item-option color="warning" expandable="true">
-        <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
-</div>
+<ion-list *ngIf="!ver" [inset]="true" >
+<ng-container *ngFor="let libro of libros">
+  <div *ngIf="filtrarLibros(libro)" class="box-libro">
+    <ion-item-sliding *ngIf="libro.disponible" [ngClass]="{ 'disponible': libro.disponible, 'no-disponible': !libro.disponible }">
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="Portada del libro" [src]="libro.imagen_url" />
+        </ion-avatar>
+        <ion-label>
+          <h3><strong>{{ libro.nombre }}</strong></h3>
+          <p>{{ libro.descripcion }}</p>
+          <p>{{ libro.categoria }}</p>
+          <p><strong>Autor:</strong> {{ libro.autor }}</p>
+          <p><strong>Cantidad:</strong> {{ libro.cantidad }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="warning" expandable="true">
+          <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </div>
+</ng-container>
+</ion-list>
+
+<!-- base 2 -->
+<ion-list *ngIf="ver" [inset]="false" >
+  <ng-container *ngFor="let libro of libros">
+    <div *ngIf="filtrarLibros(libro)" class="box-libro">
+      <ion-item-sliding *ngIf="libro.disponible" [ngClass]="{ 'disponible': libro.disponible, 'no-disponible': !libro.disponible }">
+        <ion-item [button]="true">
+          <ion-avatar aria-hidden="true" slot="start">
+            <img alt="Portada del libro" [src]="libro.imagen_url" />
+          </ion-avatar>
+          <ion-label>
+            <h3><strong>{{ libro.nombre }}</strong></h3>
+            
+            <p><strong>Autor:</strong> {{ libro.autor }}</p>
+            <p><strong>Cantidad:</strong> {{ libro.cantidad }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item-options slot="end">
+          <ion-item-option color="warning" expandable="true">
+            <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
+  </ng-container>
+  </ion-list>   
 
