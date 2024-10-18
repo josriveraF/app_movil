@@ -1,4 +1,5 @@
-export interface ILibro {             
+export interface ILibro {  
+    id:number;           
     nombre: string;          
     descripcion: string; 
     categoria:string;
@@ -6,4 +7,12 @@ export interface ILibro {
     imagen_url: string;      
     autor: string;         
     disponible: boolean;     
+}
+
+export interface Iprestamo{
+    usuario_id:number;
+    libro_id:number;
+    fecha_prestamo:string;
+    fecha_devolucion:string;
+    estado:string;
 }

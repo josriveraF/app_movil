@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicModule } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ApiUserService } from './service/api-user.service';
+import { ApiUserService } from 'src/service/api-user.service';
 import { provideHttpClient } from '@angular/common/http'; // Importa aquí
 
 @NgModule({

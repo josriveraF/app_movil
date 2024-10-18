@@ -49,7 +49,8 @@
 <ng-container *ngFor="let libro of libros">
   <div *ngIf="filtrarLibros(libro)" class="box-libro">
     <ion-item-sliding *ngIf="libro.disponible" [ngClass]="{ 'disponible': libro.disponible, 'no-disponible': !libro.disponible }">
-      <ion-item [button]="true">
+      <!-- button jeje-->
+      <ion-item [button]="true" (click)="seleccionarLibro(libro)" >
         <ion-avatar aria-hidden="true" slot="start">
           <img alt="Portada del libro" [src]="libro.imagen_url" />
         </ion-avatar>
@@ -61,6 +62,10 @@
           <p><strong>Cantidad:</strong> {{ libro.cantidad }}</p>
         </ion-label>
       </ion-item>
+      <!--fin buton-->
+      <ion-item-option color="success" (click)="prestamo()">
+        <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+      </ion-item-option>
       <ion-item-options slot="end">
         <ion-item-option color="warning" expandable="true">
           <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
