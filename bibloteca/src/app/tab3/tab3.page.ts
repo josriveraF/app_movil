@@ -15,9 +15,10 @@ export class Tab3Page implements OnInit {
   public categoriaSeleccionada: string = ''; // Almacena la categoría seleccionada
   public categorias = ['Tecnología', 'Ciencia Ficción', 'Historia', 'Literatura', 'Medicina', 'otros'];
   public ver: boolean = false; // Al estar en false no se muestra
+  public opcion: boolean = false;
+ pres: Iprestamo []=[];
 
-
-  libroSeleccionado!: ILibro;  // Libro seleccionado por el usuario
+  libroSeleccionado!: ILibro ;  // Libro seleccionado por el usuario
   usuario_id!: number; // Debes asignar el id del usuario desde alguna parte de tu aplicación
   diasPrestamo: number = 1; // Días de préstamo, por defecto 1 día
   estado: string = 'activo'; // Estado del préstamo
@@ -27,12 +28,24 @@ export class Tab3Page implements OnInit {
   ngOnInit(): void {
     this.bibloteca();
   }
+
+  basededato() {
+    this.ver = !this.ver;
+    if (!this.ver) {
+      this.alumno();
+      console.log('true');
+    } else {
+      this.bibloteca();
+    }
+  }
 seleccionarLibro(libro: ILibro) {
     this.libroSeleccionado = libro;
     console.log('Libro seleccionado:', this.libroSeleccionado);
+    this.opcion=!this.opcion;
+   
   }
   // Método para registrar el préstamo
-  prestamo() {
+  prestamo( ) {
     
     const fechaPrestamo = new Date();
     const fechaDevolucion = new Date();
@@ -55,17 +68,14 @@ seleccionarLibro(libro: ILibro) {
         console.error('Error al registrar el préstamo', error);
       }
     );
+    this.router.navigate(['/tabs/tab3']);
+    this.opcion=false;
+    
+
+    console.log('Datos del préstamo:', prestamo);
   }
 
-  basededato() {
-    this.ver = !this.ver;
-    if (!this.ver) {
-      this.alumno();
-      console.log('true');
-    } else {
-      this.bibloteca();
-    }
-  }
+  
 
   // Método para obtener la lista de libros
   bibloteca() {
@@ -93,5 +103,10 @@ seleccionarLibro(libro: ILibro) {
   // Método para regresar a la pestaña 1
   regresar() {
     this.router.navigate(['/tabs/tab1']);
+  }
+  regresar1() {
+    this.router.navigate(['/tabs/tab3']);
+    this.opcion=false;
+  
   }
 }
