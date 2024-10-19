@@ -78,12 +78,14 @@ export class Tab3Page implements OnInit {
       console.log('Opción cambiada a false después de 15 segundos');
       this.router.navigate(['/tabs/tab3']);
       this.opcion=false; 
+      this.diasPrestamo=1;
     }, 15000); // 
     // qr dentro del button prestamo
     const prestamoInfo = {
       usuario_id: 1,  // Cambia esto según el usuario actual
       libro_id: this.libroSeleccionado.id,  // Debe estar seleccionado un libro
       diasPrestamo: this.diasPrestamo
+      
     };
     
     this.qrdata = JSON.stringify(prestamoInfo); // Convierte los datos a un formato legible (JSON)
@@ -123,11 +125,13 @@ export class Tab3Page implements OnInit {
   // Método para regresar a la pestaña 1
   regresar() {
     this.router.navigate(['/tabs/tab1']);
+    
   }
   regresar1() {
     this.router.navigate(['/tabs/tab3']);
     this.opcion=false;
     this.qrdata='';
+    this.diasPrestamo=1;
   
   }
 }

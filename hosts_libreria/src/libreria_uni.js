@@ -100,16 +100,27 @@ app.post('/prestar', async (req, res) => {
     res.status(500).json({ error: 'Ocurrió un error al registrar el préstamo' });
   }
 });
-
+// filtra solo un id 
 app.get('/prestamos', async (req, res) => {
   try {
-    const result = await pool.query(
-      `SELECT pb.id, u.nombre AS usuario_nombre, l.nombre AS libro_nombre, 
-              pb.fecha_prestamo, pb.fecha_devolucion, pb.estado
-       FROM prestamos_biblioteca pb
-       JOIN usuarios u ON pb.usuario_id = u.id
-       JOIN libros_biblioteca l ON pb.libro_id = l.id`
-    );
+    const { usuario_id } = req.query; // Obtiene el ID del usuario de la consulta
+
+    // Construye la consulta base
+    let query = `
+      SELECT u.nombre AS usuario_nombre, l.nombre AS libro_nombre, 
+             pb.fecha_prestamo, pb.fecha_devolucion
+      FROM prestamos_biblioteca pb
+      JOIN usuarios u ON pb.usuario_id = u.id
+      JOIN libros_biblioteca l ON pb.libro_id = l.id
+    `;
+
+    // Agrega un filtro si se proporciona el ID del usuario
+    if (usuario_id) {
+      query += ` WHERE u.id = $1`; // Usa una consulta parametrizada
+    }
+
+    // Ejecuta la consulta
+    const result = await pool.query(query, [usuario_id]); // Pasa el ID como parámetro
 
     res.status(200).json(result.rows);
   } catch (err) {
@@ -117,6 +128,7 @@ app.get('/prestamos', async (req, res) => {
     res.status(500).json({ error: 'Error al obtener los préstamos' });
   }
 });
+
 
 //------------------------------------------------------------------------------------
 app.get('/libro_alumno', async (req, res) => {

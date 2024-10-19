@@ -16,3 +16,10 @@ export interface Iprestamo{
     fecha_devolucion:string;
     estado:string;
 }
+export interface IlisPrestado{
+    usuario_nombre:string;
+    libro_nombre:string;
+    fecha_prestamo:string;
+    fecha_devolucion:string;
+
+}

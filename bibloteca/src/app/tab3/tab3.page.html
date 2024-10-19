@@ -61,10 +61,10 @@
         </ion-avatar>
         <ion-label>
           <h3><strong>{{ libro.nombre }}</strong></h3>
-          <p>{{ libro.descripcion }}</p>
+          
           <p>{{ libro.categoria }}</p>
           <p><strong>Autor:</strong> {{ libro.autor }}</p>
-          <p><strong>Cantidad:</strong> {{ libro.cantidad }}</p>
+          <p><strong>Stock:</strong> {{ libro.cantidad }}</p>
         </ion-label>
       </ion-item>
       <!--fin buton-->
@@ -85,9 +85,9 @@
     <ion-card-title>{{ libroSeleccionado.nombre }}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <p>{{ libroSeleccionado.descripcion }}</p>
+    <p><strong>{{ libroSeleccionado.descripcion }}</strong></p>
     <p><strong>Autor:</strong> {{ libroSeleccionado.autor }}</p>
-    <p><strong>Categoría:</strong> {{ libroSeleccionado.categoria }}</p>
+    <p><strong>Stock:</strong> {{ libroSeleccionado.categoria }}</p>
 
     <!-- Selección de tiempo de préstamo -->
     <ion-item>
@@ -98,7 +98,7 @@
     </ion-item>
 
     <!-- Botones para agregar el préstamo y regresar -->
-    <ion-button expand="block" color="primary" (click)="prestamo()">Agregar Préstamo</ion-button>
+    <ion-button expand="block" color="primary" (click)="prestamo()" [disabled]="libroSeleccionado.cantidad === 0" >Agregar Préstamo</ion-button>
     <ion-button expand="block" color="medium" (click)="regresar1()" >Regresar</ion-button>
 
    
