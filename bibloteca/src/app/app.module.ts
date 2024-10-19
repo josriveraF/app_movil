@@ -5,13 +5,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiUserService } from 'src/service/api-user.service';
 import { provideHttpClient } from '@angular/common/http'; // Importa aquí
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,QRCodeModule
   ],
   providers: [
     ApiUserService,

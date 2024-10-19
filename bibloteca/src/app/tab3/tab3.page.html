@@ -34,11 +34,14 @@
   <ion-item *ngIf="!opcion">
     <ion-label>filtar genero </ion-label>
     <ion-select [(ngModel)]="categoriaSeleccionada" placeholder="Seleccionar categoria">
+      <!-- aqui genero una opcion aparte del select_option con un valor de null  y el que sigue hace un llamado a public categoria -->
+      <ion-select-option value="">Todas las categorías</ion-select-option>
       <ion-select-option *ngFor="let categoria of categorias" [value]="categoria">
         {{ categoria }}
       </ion-select-option>
     </ion-select>
   </ion-item>
+ 
   
   <nav *ngIf="!opcion"> <ion-button expand="block" shape="round" color="primary" style="margin-top: 20px;" (click)="basededato()">
     {{ ver ? 'Alumnos' : 'Biblioteca Duoc' }} <!-- Cambia el texto según el valor de 'ver' -->
@@ -49,9 +52,10 @@
 <ion-list *ngIf="!ver" [inset]="true" >
 <ng-container *ngFor="let libro of libros">
   <div *ngIf="filtrarLibros(libro)" class="box-libro">
-    <ion-item-sliding *ngIf="libro.disponible" [ngClass]="{ 'disponible': libro.disponible, 'no-disponible': !libro.disponible }">
+    <ion-item-sliding *ngIf="libro.disponible" [class.disponible]="libro.cantidad > 0" [class.no-disponible]="libro.cantidad === 0">
       <!-- button jeje-->
-      <ion-item [button]="true" (click)="seleccionarLibro(libro)" >
+       <!--- otra manera-->
+      <ion-item [button]="true"  >
         <ion-avatar aria-hidden="true" slot="start">
           <img alt="Portada del libro" [src]="libro.imagen_url" />
         </ion-avatar>
@@ -66,7 +70,7 @@
       <!--fin buton-->
       
       <ion-item-options slot="end">
-        <ion-item-option color="warning" expandable="true">
+        <ion-item-option color="warning" (click)="seleccionarLibro(libro)" expandable="true">
           <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
         </ion-item-option>
       </ion-item-options>
@@ -96,6 +100,13 @@
     <!-- Botones para agregar el préstamo y regresar -->
     <ion-button expand="block" color="primary" (click)="prestamo()">Agregar Préstamo</ion-button>
     <ion-button expand="block" color="medium" (click)="regresar1()" >Regresar</ion-button>
+
+   
+      <div *ngIf="qrdata">
+        <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+      </div>
+  
+    
   </ion-card-content>
 </ion-card>
 

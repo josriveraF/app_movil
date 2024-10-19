@@ -56,6 +56,7 @@ app.post('/prestar', async (req, res) => {
     );
 
     const cantidadDisponible = stockResult.rows[0].cantidad;
+    console.log(`Cantidad disponible antes del préstamo: ${cantidadDisponible}`);
 
     if (cantidadDisponible > 0) {
       // Inserta el préstamo en la tabla prestamos_biblioteca
@@ -63,25 +64,43 @@ app.post('/prestar', async (req, res) => {
         "INSERT INTO prestamos_biblioteca (usuario_id, libro_id, fecha_prestamo, fecha_devolucion, estado) VALUES ($1, $2, $3, $4, $5)", 
         [usuario_id, libro_id, fecha_prestamo, fecha_devolucion, estado]
       );
-
+      
       // Actualiza el stock restando una unidad
       await pool.query(
         "UPDATE stock_biblioteca SET cantidad = cantidad - 1 WHERE libro_id = $1", 
         [libro_id]
       );
 
+      // Verifica si el stock llegó a 0
+      const updatedStockResult = await pool.query(
+        "SELECT cantidad FROM stock_biblioteca WHERE libro_id = $1", 
+        [libro_id]
+      );
+      const updatedCantidad = updatedStockResult.rows[0].cantidad;
+      console.log(`Cantidad disponible después del préstamo: ${updatedCantidad}`);
+
+      if (updatedCantidad === 0) {
+        // Si es 0, actualiza el estado del libro en la tabla libros_biblioteca
+        console.log(`Actualizando el estado del libro ${libro_id} a 'false' porque el stock es 0`);
+        await pool.query(
+          "UPDATE libros_biblioteca SET estado = false WHERE id = $1", 
+          [libro_id]
+        );
+      }
+
       await pool.query('COMMIT');
-      res.status(201).json({ message: 'Préstamo registrado y stock actualizado' });
+      res.status(201).json({ message: 'Préstamo registrado, stock actualizado, y estado del libro cambiado a no disponible' });
     } else {
       await pool.query('ROLLBACK');
       res.status(400).json({ error: 'No hay stock disponible para este libro' });
     }
-  } catch (err) {
+  } catch (error) {
     await pool.query('ROLLBACK');
-    console.error(err);
-    res.status(500).json({ error: 'Error al registrar el préstamo' });
+    console.error('Error al registrar el préstamo:', error);
+    res.status(500).json({ error: 'Ocurrió un error al registrar el préstamo' });
   }
 });
+
 app.get('/prestamos', async (req, res) => {
   try {
     const result = await pool.query(
