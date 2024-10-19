@@ -9,10 +9,37 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-list>
+    
   
-  <ion-card-content style="padding-top: 40%;">
-    <img src="assets/grduoc.png" alt="Robot" class="responsive-image">
-  </ion-card-content>
+  <ion-item-sliding>
+  <ng-container *ngFor="let prestado of listado">
+    
+    <p><strong>Usuario:</strong> {{ prestado.usuario_nombre }}</p>
+    <p><strong>Libro:</strong> {{ prestado.libro_nombre }}</p>
+    <p ><strong>Prestamo:</strong> {{ prestado.prestamo.days }} día(s),</p>
+    <p>
+      <strong>Tiempo restante:</strong>  {{ prestado.tiempo_restante.hours}} horas 
+      {{ prestado.tiempo_restante.minutes }} minutos {{ prestado.tiempo_restante.seconds }} segundos
+    </p>
+    <p *ngIf=" prestado.tiempo_restante.hours === 0 && prestado.tiempo_restante.minutes === 0 && prestado.tiempo_restante.seconds === 0">
+      El préstamo ha expirado.
+    </p>
+    <div *ngIf="qrdata">
+      <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
+    <ion-item-options slot="end">
+      <ion-item-option color="warning"  expandable="true">
+        <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  
+  </ng-container>
+</ion-item-sliding>
+</ion-list>
+  <!-- Mostrar QR -->
+ 
+  
 
   
 </ion-content>

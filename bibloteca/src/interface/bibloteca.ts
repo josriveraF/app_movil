@@ -21,5 +21,14 @@ export interface IlisPrestado{
     libro_nombre:string;
     fecha_prestamo:string;
     fecha_devolucion:string;
+    prestamo: { 
+        days: number; 
+      };
+    tiempo_restante:{
+    hours:number;
+    minutes:number;
+    seconds:number;
+    
+    };
 
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,7 +14,8 @@ import { GrPage } from './gr.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    GrPageRoutingModule
+    GrPageRoutingModule,
+    QRCodeModule
   ],
   declarations: [GrPage]
 })

@@ -103,31 +103,43 @@ app.post('/prestar', async (req, res) => {
 // filtra solo un id 
 app.get('/prestamos', async (req, res) => {
   try {
-    const { usuario_id } = req.query; // Obtiene el ID del usuario de la consulta
-
-    // Construye la consulta base
+    const {id}= req.query;
+    // Consulta para obtener todos los registros de la tabla 'prestamos_biblioteca' era mi query pero la modidique para poder tener los datos exacto
+     // SELECT u.nombre AS usuario_nombre, l.nombre AS libro_nombre, 
+    //  pb.fecha_prestamo, pb.fecha_devolucion,
+     // ( pb.fecha_devolucion -pb.fecha_prestamo) as prestamo,
+    //  EXTRACT(DAY FROM (pb.fecha_devolucion - CURRENT_DATE)) AS dias,
+    //  EXTRACT(HOUR FROM (pb.fecha_devolucion - CURRENT_DATE)) AS horas,
+    //  EXTRACT(MINUTE FROM (pb.fecha_devolucion - CURRENT_DATE)) AS minutos,
+     // EXTRACT(SECOND FROM (pb.fecha_devolucion - CURRENT_DATE)) AS segundos
     let query = `
-      SELECT u.nombre AS usuario_nombre, l.nombre AS libro_nombre, 
-             pb.fecha_prestamo, pb.fecha_devolucion
-      FROM prestamos_biblioteca pb
-      JOIN usuarios u ON pb.usuario_id = u.id
-      JOIN libros_biblioteca l ON pb.libro_id = l.id
+    SELECT 
+      u.nombre AS usuario_nombre, 
+      l.nombre AS libro_nombre, 
+      pb.fecha_prestamo, 
+      pb.fecha_devolucion,
+      (pb.fecha_devolucion - pb.fecha_prestamo) AS prestamo,
+      pb.fecha_devolucion - NOW()  AS tiempo_restante
+    FROM prestamos_biblioteca pb
+          JOIN usuarios u ON pb.usuario_id = u.id
+          JOIN libros_biblioteca l ON pb.libro_id = l.id
     `;
 
-    // Agrega un filtro si se proporciona el ID del usuario
-    if (usuario_id) {
-      query += ` WHERE u.id = $1`; // Usa una consulta parametrizada
+    const params=[];
+    if (id){
+      query += 'where u.id=$1';
+      params.push(id);
     }
-
-    // Ejecuta la consulta
-    const result = await pool.query(query, [usuario_id]); // Pasa el ID como parámetro
-
+    
+    const result = await pool.query(query, params.length ? params : undefined);
+    // Enviar los resultados
     res.status(200).json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Error al obtener los préstamos' });
   }
 });
+
 
 
 //------------------------------------------------------------------------------------
