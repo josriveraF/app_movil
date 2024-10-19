@@ -23,7 +23,7 @@ export class Tab3Page implements OnInit {
   libroSeleccionado!: ILibro ;  // Libro seleccionado por el usuario
   usuario_id!: number; // Debes asignar el id del usuario desde alguna parte de tu aplicación
   diasPrestamo: number = 1; // Días de préstamo, por defecto 1 día
-  estado: string = 'activo'; // Estado del préstamo
+  estado: string = 'activo'; // Estado del prést¿
   qrdata:string;
 
   constructor(private router: Router, private apiUser: ApiUserService) {this.qrdata=''}
