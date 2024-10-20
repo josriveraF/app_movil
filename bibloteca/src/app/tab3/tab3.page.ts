@@ -79,6 +79,7 @@ export class Tab3Page implements OnInit {
       this.router.navigate(['/tabs/tab3']);
       this.opcion=false; 
       this.diasPrestamo=1;
+      this.qrdata='';
     }, 15000); // 
     // qr dentro del button prestamo
     const prestamoInfo = {

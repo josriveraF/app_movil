@@ -13,7 +13,9 @@ export class GrPage implements OnInit, OnDestroy {
   listado: IlisPrestado[] = [];  // Almacena el listado de préstamos
   timerSubscription!: Subscription; // Suscripción para el timer
   qrdata: string = '';           // Datos que se convertirán en QR
-
+  libroSeleccionado!: IlisPrestado ;
+  public ver: boolean = false; 
+  public ver1: boolean = true; 
   constructor(private router: Router, private apiAlumno: ApiAlumnoService) {this.qrdata}
 
   ngOnInit() {
@@ -21,11 +23,6 @@ export class GrPage implements OnInit, OnDestroy {
       (data: IlisPrestado[]) => {
         this.listado = data;
         console.log('Libros obtenidos:', this.listado); // Imprime los libros en la consola
-        
-        // Convertimos el listado a JSON para el QR
-        if (this.listado.length > 0) {
-          this.qrdata = JSON.stringify(this.listado[0]); // Generar QR del primer libro
-        }
         
 
         // Iniciar un timer que actualice la cuenta regresiva cada segundo
@@ -74,6 +71,17 @@ export class GrPage implements OnInit, OnDestroy {
 
   regresar() {
     this.router.navigate(['/tabs/tab1']);
+  }
+  selecionarlibo(prestado: IlisPrestado) {
+    this.libroSeleccionado = prestado;
+    this.qrdata = `Libro: ${prestado.libro_nombre}, Usuario: ${prestado.usuario_nombre}, Fecha de préstamo: ${prestado.fecha_prestamo}`; // Actualiza qrdata con los datos del libro
+    console.log('Libro seleccionado:', this.libroSeleccionado);
+    this.ver = false; // Cambia a true para mostrar el QR
+    this.ver1=false;
+  }
+  regeresar(){
+    this.ver1=true;
+    this.ver = true;
   }
 }
 
