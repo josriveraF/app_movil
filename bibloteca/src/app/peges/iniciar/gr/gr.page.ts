@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiAlumnoService } from 'src/service/api-alumno.service';
 import { IlisPrestado } from 'src/interface/bibloteca';
 import { Subscription, timer } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http'; // Importa el tipo de error
 
 @Component({
   selector: 'app-gr',
@@ -10,10 +11,10 @@ import { Subscription, timer } from 'rxjs';
   styleUrls: ['./gr.page.scss'],
 })
 export class GrPage implements OnInit, OnDestroy {
-  listado: IlisPrestado[] = [];  // Almacena el listado de préstamos
-  timerSubscription!: Subscription; // Suscripción para el timer
-  qrdata: string = '';           // Datos que se convertirán en QR
-  libroSeleccionado!: IlisPrestado ;
+  listado: IlisPrestado[] = [];
+  timerSubscription!: Subscription;
+  qrdata: string = '';
+  libroSeleccionado!: IlisPrestado;
   public ver: boolean = false; 
   public ver1: boolean = false; 
   
@@ -25,12 +26,11 @@ export class GrPage implements OnInit, OnDestroy {
         this.listado = data;
         console.log('Libros obtenidos:', this.listado);
         
-        // Iniciar un timer que actualice la cuenta regresiva cada segundo
         this.timerSubscription = timer(0, 1000).subscribe(() => {
           this.updateCountdown();
         });
       },
-      error => {
+      (error: HttpErrorResponse) => { // Especifica el tipo de error
         console.error('Error al obtener los libros', error);
       }
     );
@@ -53,7 +53,7 @@ export class GrPage implements OnInit, OnDestroy {
         const horas = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutos = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         
-        prestado.tiempo_restante = { hours: dias, minutes: horas, seconds: minutos };  // Ajustar la estructura de tiempo_restante
+        prestado.tiempo_restante = { hours: dias, minutes: horas, seconds: minutos };
       } else {
         prestado.tiempo_restante = { hours: 0, minutes: 0, seconds: 0 };
       }
@@ -68,12 +68,12 @@ export class GrPage implements OnInit, OnDestroy {
     this.libroSeleccionado = prestado;
     this.qrdata = `Libro: ${prestado.libro_nombre}, Usuario: ${prestado.usuario_nombre}, Fecha de préstamo: ${prestado.fecha_prestamo}`;
     console.log('Libro seleccionado:', this.libroSeleccionado);
-    this.ver = true; // Cambia a true para mostrar el QR
+    this.ver = true;
     this.ver1 = true;
   }
 
-  regresa1(){
-    this.ver = false; // Cambia a true para mostrar el QR
+  regresa1() {
+    this.ver = false;
     this.ver1 = false;
   }
 }

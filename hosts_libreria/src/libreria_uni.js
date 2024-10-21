@@ -1,5 +1,10 @@
 import express from "express";
 import cors from "cors";
+import multer from "multer";
+import sharp from "sharp";
+import path from "path";
+import { fileURLToPath } from 'url';
+import fs from 'fs'; // Importar fs para crear carpetas
 import bodyParser from "body-parser";
 import { pool } from "../database/conector.js";
 
@@ -9,6 +14,11 @@ const app = express();
 // Habilitar CORS y parseo de JSON
 app.use(cors());
 app.use(bodyParser.json());
+
+
+
+
+
 
 // Definir una ruta para obtener libros de la tabla libros_biblioteca
 app.get('/libros', async (req, res) => {
