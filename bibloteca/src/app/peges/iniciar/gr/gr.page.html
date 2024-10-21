@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ng-container *ngIf="ver1">
+  <ng-container *ngIf="!ver1" >
     <ion-list>
       <ng-container *ngFor="let prestado of listado">
         <ion-item-sliding>
@@ -39,9 +39,9 @@
     </ion-list>
   </ng-container>
 
-  <ion-card *ngIf="!ver">
+  <ion-card *ngIf="ver">
     <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-    <ion-button (click)="regeresar()" expand="block"  shape="round">
+    <ion-button (click)="regresa1()" expand="block" fill="clear" shape="round">
       regresar
     </ion-button>
   </ion-card>

@@ -143,6 +143,63 @@ app.get('/prestamos', async (req, res) => {
 
 
 //------------------------------------------------------------------------------------
+
+
+app.delete('/prestamosHisto', async (req, res) => {
+  const { id } = req.query; // Recibe el ID del usuario desde el frontend
+
+  try {
+    // Buscar el préstamo activo del usuario
+    const prestamoQuery = `
+      SELECT pb.id, pb.usuario_id, pb.libro_id, pb.fecha_prestamo, pb.fecha_devolucion
+      FROM prestamos_biblioteca pb
+      WHERE pb.usuario_id = $1
+      ORDER BY pb.fecha_prestamo DESC
+      LIMIT 1
+    `;
+    const prestamoResult = await pool.query(prestamoQuery, [id]);
+
+    if (prestamoResult.rows.length === 0) {
+      return res.status(404).json({ error: 'No se encontró ningún préstamo activo para este usuario' });
+    }
+
+    const prestamo = prestamoResult.rows[0];
+
+    // Eliminar el préstamo de la tabla prestamos_biblioteca
+    const deleteQuery = `
+      DELETE FROM prestamos_biblioteca
+      WHERE id = $1
+    `;
+    await pool.query(deleteQuery, [prestamo.id]);
+
+    // Incrementar el stock del libro en la tabla de libros_biblioteca
+    const updateStockQuery = `
+      UPDATE libros_biblioteca
+      SET stock = stock + 1
+      WHERE id = $1
+    `;
+    await pool.query(updateStockQuery, [prestamo.libro_id]);
+
+    // Registrar en la tabla de historial de préstamos
+    const insertHistorialQuery = `
+      INSERT INTO historial_prestamos (usuario_id, libro_id, fecha_prestamo, fecha_devolucion)
+      VALUES ($1, $2, $3, $4)
+    `;
+    await pool.query(insertHistorialQuery, [
+      prestamo.usuario_id,
+      prestamo.libro_id,
+      prestamo.fecha_prestamo,
+      prestamo.fecha_devolucion
+    ]);
+
+    res.status(200).json({ message: 'Préstamo eliminado y stock actualizado' });
+  } catch (err) {
+    console.error('Error al procesar la devolución:', err);
+    res.status(500).json({ error: 'Error al procesar la devolución' });
+  }
+});
+
+
 app.get('/libro_alumno', async (req, res) => {
   try {
     const result = await pool.query(`

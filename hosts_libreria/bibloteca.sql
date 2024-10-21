@@ -89,6 +89,19 @@ CREATE TABLE public.intercambios_libros
     libro_solicitado_id INT REFERENCES public.libros_personales(id) ON DELETE CASCADE
 );
 
+-- aun no fuciona
+CREATE TABLE historial_prestamos (
+    id SERIAL PRIMARY KEY,            -- Identificador único para cada registro
+    usuario_id INTEGER NOT NULL,      -- ID del usuario (no puede ser nulo)
+    libro_id INTEGER NOT NULL,        -- ID del libro (no puede ser nulo)
+    fecha_prestamo TIMESTAMP NOT NULL, -- Fecha de préstamo (no puede ser nulo)
+    fecha_devolucion TIMESTAMP NOT NULL, -- Fecha de devolución (no puede ser nulo)
+    created_at TIMESTAMP DEFAULT NOW(), -- Fecha y hora de creación del registro
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),  -- Relación con la tabla de usuarios
+    FOREIGN KEY (libro_id) REFERENCES libros_biblioteca(id) -- Relación con la tabla de libros
+);
+
+
 -- Insert categories into categorias
 INSERT INTO public.categorias (nombre)
 VALUES 
