@@ -56,7 +56,7 @@
       <!-- button jeje-->
        <!--- otra manera-->
       <ion-item [button]="true"  >
-        <ion-avatar aria-hidden="true" slot="start">
+        <ion-avatar aria-hidden="true" slot="start" class="avatar-grande" >
           <img alt="Portada del libro" [src]="libro.imagen_url" />
         </ion-avatar>
         <ion-label>
@@ -81,11 +81,16 @@
 </ng-container>
 
 <ion-card *ngIf="opcion">
+  <div>
+    <img alt="Portada del libro" [src]="libroSeleccionado.imagen_url" class="imagen-compacta" />
+  </div>
   <ion-card-header>
+  
     <ion-card-title>{{ libroSeleccionado.nombre }}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
     <p><strong>{{ libroSeleccionado.descripcion }}</strong></p>
+  
     <p><strong>Autor:</strong> {{ libroSeleccionado.autor }}</p>
     <p><strong>Stock:</strong> {{ libroSeleccionado.categoria }}</p>
 

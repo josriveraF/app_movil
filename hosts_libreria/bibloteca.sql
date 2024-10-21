@@ -117,61 +117,61 @@ INSERT INTO public.libros_biblioteca (nombre, descripcion, imagen_url, autor, ca
 VALUES
 ('Estructuras de Datos y Algoritmos', 
  'Un enfoque práctico para comprender los conceptos fundamentales de estructuras de datos y algoritmos en programación.', 
- 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.comunidadbaratz.com%2Fblog%2F6-movimientos-para-abrir-correctamente-un-libro-nuevo%2F&psig=AOvVaw2IKzfx2LIFs2dYL4c3w2rQ&ust=1729189872189000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOj-k7LEk4kDFQAAAAAdAAAAABAE', 'John Doe', 1, TRUE),
+ 'https://i.ibb.co/BKmR0Yd/Estructuras-de-Datos-y-Algoritmos.jpg', 'John Doe', 1, TRUE),
  
 ('Introducción a la Inteligencia Artificial', 
  'Una introducción completa a los fundamentos y aplicaciones de la inteligencia artificial en la vida moderna.', 
- 'https://drive.google.com/file/d/1ki9Es5SqUnVhFnPnTpIDJXATSNwKdjSV/view?usp=drive_link', 'Jane Smith', 1, TRUE);
+ 'https://i.ibb.co/F4Y88LY/Introducci-n-a-la-Inteligencia-Artificial.jpg', 'Jane Smith', 1, TRUE);
 
 -- Science Fiction Area
 INSERT INTO public.libros_biblioteca (nombre, descripcion, imagen_url, autor, categoria_id, disponible)
 VALUES
 ('El Marciano', 
  'La increíble historia de supervivencia de un astronauta varado en Marte. Una mezcla de ciencia y ficción.', 
- 'https://drive.google.com/file/d/1oORGmxUs2-_YLZOOI0bWegwICMNXCRum/view?usp=drive_link', 'Andy Weir', 2, TRUE),
+ 'https://i.ibb.co/L5cRWmx/El-Marciano.webp', 'Andy Weir', 2, TRUE),
  
 ('Dune', 
  'Una épica historia de ciencia ficción que explora la lucha por el poder en un planeta desértico.', 
- 'https://drive.google.com/file/d/111t21kSvFvpIUHQgY_4KhoO0qKtHytCz/view?usp=drive_link', 'Frank Herbert', 2, TRUE);
+ 'https://i.ibb.co/4Nhf5Q5/dune.jpg', 'Frank Herbert', 2, TRUE);
 
 -- History Area
 INSERT INTO public.libros_biblioteca (nombre, descripcion, imagen_url, autor, categoria_id, disponible)
 VALUES
 ('La Segunda Guerra Mundial', 
  'Un exhaustivo análisis de los eventos que llevaron al conflicto más devastador en la historia de la humanidad.', 
- 'https://drive.google.com/file/d/1nyz6cdZlCNRfYL6rLB_teLwnAqBpEVeN/view?usp=drive_link', 'Winston Churchill', 3, TRUE),
+ 'https://i.ibb.co/tYnk6Q5/segunda-guerra.webp', 'Winston Churchill', 3, TRUE),
  
 ('El Ascenso y la Caída del Imperio Romano', 
  'Un viaje detallado a través de la historia del Imperio Romano, desde su apogeo hasta su declive.', 
- 'https://drive.google.com/file/d/1r3ctOtsFwg3Fbnigu8xYaLJU18mHcfUI/view?usp=drive_link', 'Edward Gibbon', 3, TRUE);
+ 'https://i.ibb.co/CH6T42V/El-Ascenso-y-la-Ca-da-del-Imperio-Romano.jpg', 'Edward Gibbon', 3, TRUE);
 
 -- Literature Area
 INSERT INTO public.libros_biblioteca (nombre, descripcion, imagen_url, autor, categoria_id, disponible)
 VALUES
 ('Cien Años de Soledad', 
  'Una obra maestra del realismo mágico, que narra la historia de la familia Buendía en el pueblo ficticio de Macondo.', 
- 'https://drive.google.com/file/d/19XDaTR1kh9dgjd5__IgQPirL15MX7HO6/view?usp=drive_link', 'Gabriel García Márquez', 4, TRUE),
+ 'https://i.ibb.co/nwZXGL5/gabriel-garcia-marquez-cien-anos-de-soledad-libreria-catalonia5285.jpg', 'Gabriel García Márquez', 4, TRUE),
  
 ('Don Quijote de la Mancha', 
  'Una de las mayores obras literarias de la historia, que cuenta las aventuras de un hidalgo en busca de gloria.', 
- 'https://drive.google.com/file/d/1M_kXpof-U6Lsh24x1UIFAVz2r_ax8wri/view?usp=drive_link', 'Miguel de Cervantes', 4, TRUE);
+ 'https://i.ibb.co/BnXGDt2/Don-Quijote-de-la-Mancha-png.webp', 'Miguel de Cervantes', 4, TRUE);
 
 -- Medicine Area
 INSERT INTO public.libros_biblioteca (nombre, descripcion, imagen_url, autor, categoria_id, disponible)
 VALUES
 ('Anatomía Humana', 
  'Una referencia esencial para estudiantes de medicina, con ilustraciones detalladas del cuerpo humano.', 
- 'https://drive.google.com/file/d/16H1SY3hw-YidrHiapHz-WdnGILyzapaT/view?usp=drive_link', 'Henry Gray', 5, TRUE),
+ 'https://i.ibb.co/gTSBK58/Anatom-a-Humana.webp', 'Henry Gray', 5, TRUE),
  
 ('Farmacología Básica y Clínica', 
  'Una guía comprensiva para entender los principios básicos de la farmacología y su aplicación clínica.', 
- 'https://drive.google.com/file/d/1q9p87zY-bKmP-9lqAWsb0YLt_KGiS7dr/view?usp=drive_link', 'Bertram Katzung', 5, TRUE);
+ 'https://i.ibb.co/7CCNP9N/Farmacolog-a-B-sica-y-Cl-nica.webp', 'Bertram Katzung', 5, TRUE);
 
 -- Insert stock into stock_biblioteca
 INSERT INTO public.stock_biblioteca (libro_id, cantidad)
 VALUES
 (1, 10),  -- Estructuras de Datos y Algoritmos
-(2, 7),   -- Introducción a la Inteligencia Artificial
+(2, 0),   -- Introducción a la Inteligencia Artificial
 (3, 5),   -- El Marciano
 (4, 8),   -- Dune
 (5, 6),   -- La Segunda Guerra Mundial

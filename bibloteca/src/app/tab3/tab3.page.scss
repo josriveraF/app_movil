@@ -40,5 +40,18 @@
    padding-bottom: 1px;
     
 }
-
+.avatar-grande {
+    width: 80px;
+    height: 80px;
+  }
+  
+  
+  .imagen-compacta {
+    width: 100%; /* La imagen ocupará el 100% del ancho del contenedor */
+    max-width: 150px; /* Máximo ancho de la imagen para que sea compacta, puedes ajustarlo */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Ajusta la imagen al espacio disponible sin distorsionar */
+    border-radius: 10px; /* Opcional: si deseas bordes redondeados */
+  }
+  
 
