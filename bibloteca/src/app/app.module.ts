@@ -5,14 +5,18 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiUserService } from 'src/service/api-user.service';
 import { provideHttpClient } from '@angular/common/http'; // Importa aquí
-import { QRCodeModule } from 'angularx-qrcode';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { UsuarioPageModule } from './peges/iniciar/usuario/usuario.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(),
-    AppRoutingModule,QRCodeModule
+    AppRoutingModule
   ],
   providers: [
     ApiUserService,

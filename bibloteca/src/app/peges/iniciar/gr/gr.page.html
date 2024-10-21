@@ -1,48 +1,18 @@
 <ion-header [translucent]="true">
+  
   <ion-item lines="none">
-    <ion-title class="titulo-tabs" size="large">Codigo QR</ion-title>
-    <ion-buttons slot="start" (click)="regresar()">
+  <ion-title class="titulo-tabs" size="large">Codigo qr</ion-title>
+    <ion-buttons slot="start" (click)="regresar()" >
       <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
     </ion-buttons>
   </ion-item>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ng-container *ngIf="ver1">
-    <ion-list>
-      <ng-container *ngFor="let prestado of listado">
-        <ion-item-sliding>
-          <ion-item [button]="true">
-            <ion-avatar aria-hidden="true" slot="start">
-              <img alt="Portada del libro" />
-            </ion-avatar>
-            <ion-label>
-              <h3><strong>{{ prestado.usuario_nombre }}</strong></h3>
-              <p><strong>Libro:</strong>{{ prestado.libro_nombre }}</p>
-              <p><strong>Prestamo:</strong> {{ prestado.prestamo.days }} día(s)</p>
-              <p>
-                <strong>Tiempo restante:</strong> {{ prestado.tiempo_restante.hours }} horas 
-                {{ prestado.tiempo_restante.minutes }} minutos {{ prestado.tiempo_restante.seconds }} segundos
-              </p>
-              <p *ngIf=" prestado.tiempo_restante.hours === 0 && prestado.tiempo_restante.minutes === 0 && prestado.tiempo_restante.seconds === 0">
-                El préstamo ha expirado.
-              </p>
-            </ion-label>
-          </ion-item>
-          <ion-item-options slot="end">
-            <ion-item-option color="warning" (click)="selecionarlibo(prestado)" expandable="true"> QR
-              <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
-            </ion-item-option>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ng-container>
-    </ion-list>
-  </ng-container>
+  
+  <ion-card-content style="padding-top: 40%;">
+    <img src="assets/grduoc.png" alt="Robot" class="responsive-image">
+  </ion-card-content>
 
-  <ion-card *ngIf="!ver">
-    <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-    <ion-button (click)="regeresar()" expand="block"  shape="round">
-      regresar
-    </ion-button>
-  </ion-card>
+  
 </ion-content>

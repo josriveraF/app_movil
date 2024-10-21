@@ -13,20 +13,17 @@ export class Tab3Page implements OnInit {
   libros: ILibro[] = [];
   borrar: string = '';
   public categoriaSeleccionada: string = ''; // Almacena la categoría seleccionada
-  public categorias = ['Tecnología', 'Ciencia Ficción', 'Historia', 'Literatura', 'Medicina', 'otro'];
+  public categorias = ['Tecnología', 'Ciencia Ficción', 'Historia', 'Literatura', 'Medicina', 'otros'];
   public ver: boolean = false; // Al estar en false no se muestra
   public opcion: boolean = false;
-  public verqr: boolean = true;
-  public categoo ='';
  pres: Iprestamo []=[];
 
   libroSeleccionado!: ILibro ;  // Libro seleccionado por el usuario
   usuario_id!: number; // Debes asignar el id del usuario desde alguna parte de tu aplicación
   diasPrestamo: number = 1; // Días de préstamo, por defecto 1 día
-  estado: string = 'activo'; // Estado del prést¿
-  qrdata:string;
+  estado: string = 'activo'; // Estado del préstamo
 
-  constructor(private router: Router, private apiUser: ApiUserService) {this.qrdata=''}
+  constructor(private router: Router, private apiUser: ApiUserService) {}
 
   ngOnInit(): void {
     this.bibloteca();
@@ -41,7 +38,7 @@ export class Tab3Page implements OnInit {
       this.bibloteca();
     }
   }
-  seleccionarLibro(libro: ILibro) {
+seleccionarLibro(libro: ILibro) {
     this.libroSeleccionado = libro;
     console.log('Libro seleccionado:', this.libroSeleccionado);
     this.opcion=!this.opcion;
@@ -71,33 +68,13 @@ export class Tab3Page implements OnInit {
         console.error('Error al registrar el préstamo', error);
       }
     );
-    
-    
-    this.opcion=true; 
-    setTimeout(() => {
-      console.log('Opción cambiada a false después de 15 segundos');
-      this.router.navigate(['/tabs/tab3']);
-      this.opcion=false; 
-      this.diasPrestamo=1;
-      this.qrdata='';
-    }, 15000); // 
-    // qr dentro del button prestamo
-    const prestamoInfo = {
-      usuario_id: 1,  // Cambia esto según el usuario actual
-      libro_id: this.libroSeleccionado.id,  // Debe estar seleccionado un libro
-      diasPrestamo: this.diasPrestamo
-      
-    };
-    
-    this.qrdata = JSON.stringify(prestamoInfo); // Convierte los datos a un formato legible (JSON)
-    console.log(this.qrdata);
-    
+    this.router.navigate(['/tabs/tab3']);
+    this.opcion=false;
     
 
     console.log('Datos del préstamo:', prestamo);
   }
-  
-  
+
   
 
   // Método para obtener la lista de libros
@@ -126,13 +103,10 @@ export class Tab3Page implements OnInit {
   // Método para regresar a la pestaña 1
   regresar() {
     this.router.navigate(['/tabs/tab1']);
-    
   }
   regresar1() {
     this.router.navigate(['/tabs/tab3']);
     this.opcion=false;
-    this.qrdata='';
-    this.diasPrestamo=1;
   
   }
 }

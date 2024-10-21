@@ -1,37 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IniciarPage } from './iniciar.page';
 
 const routes: Routes = [
   {
     path: '',
     component: IniciarPage
-  },  {
-    path: 'registro',
-    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
-  },
-  {
-    path: 're',
-    loadChildren: () => import('./re/re.module').then( m => m.RePageModule)
   },
   {
     path: 'usuario',
-    loadChildren: () => import('./usuario/usuario.module').then( m => m.UsuarioPageModule)
+    loadChildren: () => import('./usuario/usuario.module').then(m => m.UsuarioPageModule)
   },
   {
     path: 'gr',
-    loadChildren: () => import('./gr/gr.module').then( m => m.GrPageModule)
+    loadChildren: () => import('./gr/gr.module').then(m => m.GrPageModule)
   },
   {
-    path: 'mibibloteca',
-    loadChildren: () => import('./mibibloteca/mibibloteca.module').then( m => m.MibiblotecaPageModule)
+    path: 'mibiblioteca',  // Corrige el nombre si estaba mal escrito
+    loadChildren: () => import('./mibibloteca/mibibloteca.module').then(m => m.MibiblotecaPageModule)
   },
   {
     path: 'solicitud',
-    loadChildren: () => import('./solicitud/solicitud.module').then( m => m.SolicitudPageModule)
+    loadChildren: () => import('./solicitud/solicitud.module').then(m => m.SolicitudPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   }
-
 ];
 
 @NgModule({
@@ -39,3 +34,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class IniciarPageRoutingModule {}
+

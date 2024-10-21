@@ -56,7 +56,6 @@ app.post('/prestar', async (req, res) => {
     );
 
     const cantidadDisponible = stockResult.rows[0].cantidad;
-    console.log(`Cantidad disponible antes del préstamo: ${cantidadDisponible}`);
 
     if (cantidadDisponible > 0) {
       // Inserta el préstamo en la tabla prestamos_biblioteca
@@ -64,83 +63,41 @@ app.post('/prestar', async (req, res) => {
         "INSERT INTO prestamos_biblioteca (usuario_id, libro_id, fecha_prestamo, fecha_devolucion, estado) VALUES ($1, $2, $3, $4, $5)", 
         [usuario_id, libro_id, fecha_prestamo, fecha_devolucion, estado]
       );
-      
+
       // Actualiza el stock restando una unidad
       await pool.query(
         "UPDATE stock_biblioteca SET cantidad = cantidad - 1 WHERE libro_id = $1", 
         [libro_id]
       );
 
-      // Verifica si el stock llegó a 0
-      const updatedStockResult = await pool.query(
-        "SELECT cantidad FROM stock_biblioteca WHERE libro_id = $1", 
-        [libro_id]
-      );
-      const updatedCantidad = updatedStockResult.rows[0].cantidad;
-      console.log(`Cantidad disponible después del préstamo: ${updatedCantidad}`);
-
-      if (updatedCantidad === 0) {
-        // Si es 0, actualiza el estado del libro en la tabla libros_biblioteca
-        console.log(`Actualizando el estado del libro ${libro_id} a 'false' porque el stock es 0`);
-        await pool.query(
-          "UPDATE libros_biblioteca SET estado = false WHERE id = $1", 
-          [libro_id]
-        );
-      }
-
       await pool.query('COMMIT');
-      res.status(201).json({ message: 'Préstamo registrado, stock actualizado, y estado del libro cambiado a no disponible' });
+      res.status(201).json({ message: 'Préstamo registrado y stock actualizado' });
     } else {
       await pool.query('ROLLBACK');
       res.status(400).json({ error: 'No hay stock disponible para este libro' });
     }
-  } catch (error) {
+  } catch (err) {
     await pool.query('ROLLBACK');
-    console.error('Error al registrar el préstamo:', error);
-    res.status(500).json({ error: 'Ocurrió un error al registrar el préstamo' });
+    console.error(err);
+    res.status(500).json({ error: 'Error al registrar el préstamo' });
   }
 });
-// filtra solo un id 
 app.get('/prestamos', async (req, res) => {
   try {
-    const {id}= req.query;
-    // Consulta para obtener todos los registros de la tabla 'prestamos_biblioteca' era mi query pero la modidique para poder tener los datos exacto
-     // SELECT u.nombre AS usuario_nombre, l.nombre AS libro_nombre, 
-    //  pb.fecha_prestamo, pb.fecha_devolucion,
-     // ( pb.fecha_devolucion -pb.fecha_prestamo) as prestamo,
-    //  EXTRACT(DAY FROM (pb.fecha_devolucion - CURRENT_DATE)) AS dias,
-    //  EXTRACT(HOUR FROM (pb.fecha_devolucion - CURRENT_DATE)) AS horas,
-    //  EXTRACT(MINUTE FROM (pb.fecha_devolucion - CURRENT_DATE)) AS minutos,
-     // EXTRACT(SECOND FROM (pb.fecha_devolucion - CURRENT_DATE)) AS segundos
-    let query = `
-    SELECT 
-      u.nombre AS usuario_nombre, 
-      l.nombre AS libro_nombre, 
-      pb.fecha_prestamo, 
-      pb.fecha_devolucion,
-      (pb.fecha_devolucion - pb.fecha_prestamo) AS prestamo,
-      pb.fecha_devolucion - NOW()  AS tiempo_restante
-    FROM prestamos_biblioteca pb
-          JOIN usuarios u ON pb.usuario_id = u.id
-          JOIN libros_biblioteca l ON pb.libro_id = l.id
-    `;
+    const result = await pool.query(
+      `SELECT pb.id, u.nombre AS usuario_nombre, l.nombre AS libro_nombre, 
+              pb.fecha_prestamo, pb.fecha_devolucion, pb.estado
+       FROM prestamos_biblioteca pb
+       JOIN usuarios u ON pb.usuario_id = u.id
+       JOIN libros_biblioteca l ON pb.libro_id = l.id`
+    );
 
-    const params=[];
-    if (id){
-      query += 'where u.id=$1';
-      params.push(id);
-    }
-    
-    const result = await pool.query(query, params.length ? params : undefined);
-    // Enviar los resultados
     res.status(200).json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Error al obtener los préstamos' });
   }
 });
-
-
 
 //------------------------------------------------------------------------------------
 app.get('/libro_alumno', async (req, res) => {

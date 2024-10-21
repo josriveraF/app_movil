@@ -21,14 +21,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: 'tab1',  // Cambiado a ruta relativa
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: 'tabs',  // Cambiado a ruta relativa
     pathMatch: 'full'
   }
 ];
@@ -37,3 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
 })
 export class TabsPageRoutingModule {}
+

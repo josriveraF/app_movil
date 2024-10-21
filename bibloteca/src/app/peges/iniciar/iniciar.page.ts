@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-iniciar',
   templateUrl: './iniciar.page.html',
@@ -7,15 +8,19 @@ import { Router } from '@angular/router';
 })
 export class IniciarPage implements OnInit {
 
-  constructor( private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
-login(){
-  this.router.navigate(['/iniciar/registro']);
-}
-registro(){
-  this.router.navigate(['/iniciar/re']);
+
+  // Método para navegar a la página de login
+  login() {
+    this.router.navigate(['/login']);
+  }
+
+  // Método para navegar a la página de home
+  registro() {
+    this.router.navigate(['/registro']);
+  }
 }
 
-}
